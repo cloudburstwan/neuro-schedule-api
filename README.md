@@ -28,4 +28,4 @@ We initially attempt to parse content with Regex (for schedule format parsing) a
 This means that while the API is unofficial, the data for it comes from an official source. Barring LLM-related issues, the data provided by this API endpoint can be trusted.
 
 ## Contributing
-You are free to contribute to this project by submitting [Pull Requests](https://github.com/cloudburstwan/neuro-schedule-api/pulls), suggesting changes via [Issues](https://github.com/cloudburstwan/neuro-schedule-api/issues), or forking the project for your own purposes, as long as you follow our [License](https://github.com/cloudburstwan/neuro-schedule-api/blob/master/LICENSE).
+You are free to contribute to this project by submitting [Pull Requests](https://github.com/cloudburstwan/neuro-schedule-api/pulls), suggesting changes via [Issues](https://github.com/cloudburstwan/neuro-schedule-api/issues), or forking the project for your own purposes, as long as you follow our [License](https://github.com/cloudburstwan/neuro-schedule-api/blob/main/LICENSE).
