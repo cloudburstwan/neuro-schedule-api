@@ -1,0 +1,15 @@
+services:
+  app:
+    build: .
+    container_name: neuro-schedule-api
+    volumes:
+      - "schedule_data:/bin/neuro-schedule-api/data"
+    ports:
+      - "80:80"
+    environment:
+      OPENAI_KEY:
+      DISCORD_BOT_TOKEN:
+      DISCORD_CHANNEL_ID:
+
+volumes:
+  schedule_data:
