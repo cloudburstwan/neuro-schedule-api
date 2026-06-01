@@ -69,9 +69,12 @@ func (h *Hub) Broadcast(newSchedule []NeuroScheduleEntry) error {
 	h.schedule = newSchedule
 	h.mu.Unlock()
 
+	h.mu.RLock()
+	defer h.mu.RUnlock()
 	// TODO: go channel support for real-time
 
 	scheduleJSON, err := json.Marshal(h.schedule)
+
 	if err != nil {
 		return err
 	}
