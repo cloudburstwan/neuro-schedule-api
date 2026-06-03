@@ -52,7 +52,7 @@ func getScheduleModificationFromAmbiguousScheduleUpdate(schedule []hub.NeuroSche
 
 	res, err := client.Chat.Completions.New(ctx, openai.ChatCompletionNewParams{
 		Messages: []openai.ChatCompletionMessageParamUnion{
-			openai.DeveloperMessage("Your job is to take an input JSON object from the user containing a current schedule and an arbitrary string and return the schedule with the change the arbitrary string could be requesting. An example would be if there's a schedule with an event on Thursday at 7pm and the arbitrary string is \"The stream on Thursday will be at 9pm\", then you should modify the schedule to change the time for the event on Thursday. You must respond with the JSON of the schedule array only. Do not wrap it in an object like the user does, only respond with the schedule array you have modified."),
+			openai.DeveloperMessage("Your job is to take an input JSON object from the user containing a current schedule and an arbitrary string and return the schedule with the change the arbitrary string could be requesting. An example would be if there's a schedule with an event on Thursday at 7pm and the arbitrary string is \"The stream on Thursday will be at 9pm\", then you should modify the schedule to change the time for the event on Thursday. You must respond with the JSON of the schedule array only. Do not wrap it in an object like the user does, only respond with the schedule array you have modified. If changes appear to be targeted at an unknown \"schedule image\" only (e.g. \"The schedule image is incorrect for Ellie's collab\"), then no change is required as the update is focused on correcting a graphic that you are not being given."),
 			openai.UserMessage(string(scheduleJSON)),
 		},
 		Model: openai.ChatModelGPT5_4Nano,
