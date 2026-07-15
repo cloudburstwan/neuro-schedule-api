@@ -21,6 +21,7 @@ func New(hub *hub.Hub) *Server {
 
 	s.router.HandleFunc("/schedule", s.handleGetScheduleJSON)
 	s.router.HandleFunc("/schedule.xml", s.handleGetScheduleRSS)
+	s.router.HandleFunc("/schedule.ics", s.handleGetScheduleICS)
 	return s
 }
 

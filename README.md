@@ -2,7 +2,7 @@
 This repository contains the source code for the **unofficial** Neuro-sama stream schedule API available at https://schedule-api.nwero.net/.
 
 ## How to use?
-This API currently provides 2 data formats: JSON and XML (RSS). More formats can (probably) be added upon request.
+This API currently provides 3 data formats: JSON, XML (RSS), and ICS (iCalendar). More formats can (probably) be added upon request.
 
 To receive JSON via REST, make a GET request to `https://schedule-api.nwero.net/schedule` with an `Accept` header set to one of the following values:
 - ` ` (Nothing, the API will default to JSON)
@@ -14,6 +14,8 @@ To receive JSON via REST, make a GET request to `https://schedule-api.nwero.net/
 > There are plans to implement a EventStream JSON API which will be available by setting `Accept` to `text/event-stream` (or `text/*`). As this is currently not implemented, attempts to request this content will return a 501 Not Implemented HTTP error code.
 
 To receive XML (RSS), make a GET request to `https://schedule-api.nwero.net/schedule.xml`. There is no need to provide any additional headers for this request.
+
+To receive ICS (iCalendar), make a GET request to `https://schedule-api.nwero.net/schedule.ics`. There is no need to provide any additional headers for this request. You can directly subscribe to this URL from calendar applications.
 
 If a data format you require is not provided by this API, please take a look at [our instructions for contributing](#Contributing).
 
