@@ -19,6 +19,7 @@ type NeuroScheduleEntry struct {
 	Title     string   `json:"title,omitempty"`
 	Live      bool     `json:"live"`
 	Streamers []string `json:"streamers,omitempty"`
+	Segments  []string `json:"segments,omitempty"`
 }
 
 func New() *Hub {
