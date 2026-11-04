@@ -79,11 +79,18 @@ func Parse(mc string, prevSchedule []hub.NeuroScheduleEntry) ([]hub.NeuroSchedul
 				})
 			}
 		} else {
+			var segments []string
+			if title == "Neuro Stream" || title == "Evil Stream" {
+				segments = append(segments, "Needs populating!")
+			} else {
+				segments = nil
+			}
 			result = append(result, hub.NeuroScheduleEntry{
 				Title:     title,
 				Timestamp: startTime.Format(time.RFC3339),
 				Live:      isLive,
 				Streamers: streamers,
+				Segments:  segments,
 			})
 		}
 	}
