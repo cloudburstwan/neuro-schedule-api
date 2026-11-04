@@ -47,6 +47,7 @@ func Parse(mc string, prevSchedule []hub.NeuroScheduleEntry) ([]hub.NeuroSchedul
 		isLive := len(match[2]) > 0
 		var title string
 		var streamers []string
+		var segments []string
 		if isLive {
 			title = strings.Trim(stripNonValidCharacters(string(match[3])), " ")
 			streamers, err = parseStreamers(title)
@@ -56,6 +57,12 @@ func Parse(mc string, prevSchedule []hub.NeuroScheduleEntry) ([]hub.NeuroSchedul
 		} else {
 			title = ""
 			streamers = nil
+		}
+
+		if title == "Neuro Stream" || title == "Evil Stream" {
+			segments = append(segments, "Needs populating!")
+		} else {
+			segments = nil
 		}
 
 		if mode == "update" {
@@ -69,6 +76,7 @@ func Parse(mc string, prevSchedule []hub.NeuroScheduleEntry) ([]hub.NeuroSchedul
 					Timestamp: startTime.Format(time.RFC3339),
 					Live:      isLive,
 					Streamers: streamers,
+					Segments:  segments,
 				}
 			} else {
 				result = append(result, hub.NeuroScheduleEntry{
@@ -76,15 +84,10 @@ func Parse(mc string, prevSchedule []hub.NeuroScheduleEntry) ([]hub.NeuroSchedul
 					Timestamp: startTime.Format(time.RFC3339),
 					Live:      isLive,
 					Streamers: streamers,
+					Segments:  segments,
 				})
 			}
 		} else {
-			var segments []string
-			if title == "Neuro Stream" || title == "Evil Stream" {
-				segments = append(segments, "Needs populating!")
-			} else {
-				segments = nil
-			}
 			result = append(result, hub.NeuroScheduleEntry{
 				Title:     title,
 				Timestamp: startTime.Format(time.RFC3339),
